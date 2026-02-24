@@ -5,6 +5,7 @@ package senai.henrique.motor.dados;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence; // Importação adicionada
 
 public class App {
     public static void main(String[] args) {
@@ -13,8 +14,12 @@ public class App {
         String clientId = "JavaClient_Henrique_" + System.currentTimeMillis(); // inicia sessão nova cada vez que roda
         String topic = "senai/henrique/motor/dados"; // Tópico padronizado conforme o documento
 
+        // Configura o Paho MQTT para usar a memória RAM, evitando a criação daquelas pastas de cache
+        MemoryPersistence persistence = new MemoryPersistence();
+
         try {
-            MqttClient client = new MqttClient(broker, clientId);
+            // Passamos o 'persistence' como terceiro parâmetro aqui
+            MqttClient client = new MqttClient(broker, clientId, persistence);
             client.connect();
             System.out.println("Conectado ao Broker! Aguardando telemetria do motor...");
 
