@@ -4,13 +4,13 @@
 #include <LiquidCrystal_I2C.h>
 
 //CONFIGURAÇÕES DE REDE E MQTT 
-const char* ssid = "Wokwi-GUEST"; 
-const char* password = "";
-const char* mqtt_server = "broker.hivemq.com";
-const char* topic_telemetria = "senai/henrique/motor/dados"; 
+const char* ssid = "Wokwi-GUEST";  //nome da rede gratis
+const char* password = ""; //sem senha
+const char* mqtt_server = "broker.hivemq.com"; //broker
+const char* topic_telemetria = "senai/henrique/motor/dados"; //telemetria padronizada
 
 //DEFINIÇÃO DE PINOS 
-#define PIN_DHT 15
+#define PIN_DHT 15 
 #define PIN_VIBRA 34
 #define PIN_CORRENTE 35
 #define PIN_LED 12
